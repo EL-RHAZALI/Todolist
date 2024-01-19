@@ -38,13 +38,8 @@ router.put("/update/:id" , async(req , res)=>{
 
 router.delete("/delete/:id" , async(req , res)=>{
     myId = req.params.id
-    const delData = await Todo.findByIdAndDelete({_id:myId})
-    .then((deleteTodo)=>{
-        res.send(deleteTodo)
-    })
-    .catch((Err)=>{
-        res.send(Err)
-    })
+    const result = await Todo.findByIdAndDelete({_id:myId})
+    res.json({result})
 })
 
 router.get("/completed/:id" , async (req , res) => {
